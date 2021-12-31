@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
 const express = require ('express')
 const bodyParser = require ('body-parser')
 const mongoose = require ('mongoose')
@@ -9,7 +12,7 @@ app.use(bodyParser.urlencoded({
 }))
 
 try{
-    mongoose.connect('mongodb+srv://wynsor:yRjDRRTcajFPrD5P@cluster0.dvbfe.mongodb.net/Cluster0?retryWrites=true&w=majority')
+    mongoose.connect(process.env.uri)
 }catch (err) {
     console.log(err)
 }
